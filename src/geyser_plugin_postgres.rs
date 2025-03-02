@@ -311,7 +311,7 @@ impl GeyserPlugin for GeyserPluginPostgres {
         Ok(())
     }
 
-    fn update_slot_status(&self, slot: u64, parent: Option<u64>, status: SlotStatus) -> Result<()> {
+    fn update_slot_status(&self, slot: u64, parent: Option<u64>, status: &SlotStatus) -> Result<()> {
         info!("Updating slot {:?} at with status {:?}", slot, status);
 
         match &self.client {
@@ -323,7 +323,7 @@ impl GeyserPlugin for GeyserPluginPostgres {
                 )));
             }
             Some(client) => {
-                let result = client.update_slot_status(slot, parent, status);
+                let result = client.update_slot_status(slot, parent, status.clone());
 
                 if let Err(err) = result {
                     return Err(GeyserPluginError::SlotStatusUpdateError{
