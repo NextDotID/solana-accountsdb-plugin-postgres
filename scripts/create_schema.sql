@@ -69,7 +69,9 @@ Create TYPE "TransactionErrorCode" AS ENUM (
     'InvalidLoadedAccountsDataSizeLimit',
     'ResanitizationNeeded',
     'UnbalancedTransaction',
-    'ProgramExecutionTemporarilyRestricted'
+    'ProgramExecutionTemporarilyRestricted',
+    'ProgramCacheHitMaxLimit',
+    'CommitCancelled'
 );
 
 CREATE TYPE "TransactionError" AS (

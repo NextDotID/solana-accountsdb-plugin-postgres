@@ -354,6 +354,7 @@ pub enum DbTransactionErrorCode {
     UnbalancedTransaction,
     ProgramExecutionTemporarilyRestricted,
     ProgramCacheHitMaxLimit,
+    CommitCancelled,
 }
 
 impl From<&TransactionError> for DbTransactionErrorCode {
@@ -415,6 +416,7 @@ impl From<&TransactionError> for DbTransactionErrorCode {
                 Self::ProgramExecutionTemporarilyRestricted
             }
             TransactionError::ProgramCacheHitMaxLimit => Self::ProgramCacheHitMaxLimit,
+            TransactionError::CommitCancelled => Self::CommitCancelled,
         }
     }
 }
