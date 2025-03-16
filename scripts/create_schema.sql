@@ -22,10 +22,11 @@ CREATE INDEX account_owner ON account (owner);
 CREATE INDEX account_slot ON account (slot);
 
 -- The table storing slot information
+-- Longest for status: first_shred_received (20 chars)
 CREATE TABLE slot (
     slot BIGINT PRIMARY KEY,
     parent BIGINT,
-    status VARCHAR(16) NOT NULL,
+    status VARCHAR(20) NOT NULL,
     updated_on TIMESTAMP NOT NULL
 );
 
